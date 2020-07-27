@@ -1,15 +1,22 @@
-
 #include <iostream>
 using std::cout;
-bool findSum(int array[], int sum, int length)
+using std::cin;
+
+bool findSum(float array[], float sum, uint length)
 {
-    for(int index = 0; index < length; index++)
+    double result;
+    for(uint index = 0; index < length; index++)
     {
-        for(int index2 = index; index2 < length; index2++)
+        for(uint index2 = index + 1; index2 < length; index2++)
         {
-            if(array[index] + array[index2] == sum)
+            result = array[index] + array[index2];
+            if(result > sum - 0.000001 && result < sum + 0.000001)
             {
                 return true;
+            }
+            else
+            {
+                cout << array[index] << "+" << array[index2] << " != " << sum  << " != " << array[index] + array[index2] << std::endl;
             }
         }
     }
@@ -22,9 +29,22 @@ bool findSum(int array[], int sum, int length)
 
 int main()
 {
-    int array[] = {2, 14, 17, 128, 19, 26};
-    int sum = 1000;
-    int length = sizeof(array)/sizeof(array[0]);
+    uint size;
+    cout << "How many numbers in your list? ";
+    cin >> size;
 
-    cout << "Two numbers that add up to " << sum << (findSum(array, sum, length) ? " was found\n" : " was not found\n");
+    float * array = new float[size];
+    for(uint x = 0; x < size; x++)
+    {
+        cout << "Enter number " << x + 1 << ": ";
+        cin >> array[x];
+    }
+
+    float sum;
+    cout << "What sum of two numbers are you looking for? ";
+    cin >> sum;
+
+
+
+    cout << "Two numbers that add up to " << sum << (findSum(array, sum, size) ? " was found\n" : " was not found\n");
 }

@@ -2,7 +2,7 @@
 using std::cout;
 using std::cin;
 
-bool findSum(float array[], float sum, uint length)
+bool findSum(double array[], double sum, uint length)
 {
     double result;
     for(uint index = 0; index < length; index++)
@@ -13,10 +13,6 @@ bool findSum(float array[], float sum, uint length)
             if(result > sum - 0.000001 && result < sum + 0.000001)
             {
                 return true;
-            }
-            else
-            {
-                cout << array[index] << "+" << array[index2] << " != " << sum  << " != " << array[index] + array[index2] << std::endl;
             }
         }
     }
@@ -33,14 +29,14 @@ int main()
     cout << "How many numbers in your list? ";
     cin >> size;
 
-    float * array = new float[size];
+    double * array = new double[size];
     for(uint x = 0; x < size; x++)
     {
         cout << "Enter number " << x + 1 << ": ";
         cin >> array[x];
     }
 
-    float sum;
+    double sum;
     cout << "What sum of two numbers are you looking for? ";
     cin >> sum;
 

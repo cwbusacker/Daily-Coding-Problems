@@ -9,7 +9,10 @@ def cons(a, b):
     def pair(f):
         return f(a, b)
     return pair
-Implement car and cdr. */
+Implement car and cdr. 
+
+NOTE: It appears the example was written in python, but I chose to contine writing in c++;
+*/
 #include <map>
 #include <iostream>
 using std::pair;

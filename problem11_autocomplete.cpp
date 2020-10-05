@@ -1,5 +1,19 @@
 
+/*
+This problem was asked by Twitter.
 
+Implement an autocomplete system. That is, given a query string s and a 
+set of all possible query strings, return all strings in the set that 
+have s as a prefix.
+
+For example, given the query string de and the set of strings 
+[dog, deer, deal], return [deer, deal].
+
+Hint: Try preprocessing the dictionary into a more efficient data structure to speed up queries.
+
+NOTE: I read in a dictionary.txt file. This gives a very large list of possible words because
+the dictionary is very large (over 300,000 words). 
+*/
 #include <vector>
 #include <iostream>
 #include <string>
@@ -13,6 +27,7 @@ std::map<char, std::vector<std::string> > readDictionary()
     std::ifstream fileIn("dictionary.txt");
     while(std::getline(fileIn, word))
     {
+        word[0] = tolower(word[0]); //lowercase first letter
         retVal[word[0]].push_back(word);
     }
     return retVal;
@@ -27,7 +42,7 @@ std::vector<std::string> computeAutoCompleteWords(std::string word)
     std::sort(wordsThatStartWithFirstLetter.begin(), wordsThatStartWithFirstLetter.end()); 
     if(word.length() == 1)
         return wordsThatStartWithFirstLetter;
-    //is there a faster way? This is linear and slow
+        
     bool foundFirstOne = false;
     for(unsigned int i = 0; i < size; i++)
     {

@@ -35,9 +35,9 @@ For example, if X = {1, 3, 5}, you could climb 1, 3, or 5 steps at a time.
     computeNumberUniquePaths will determine the number of ways to create a sum using
     the numbers found in numStepsAtATime. (See problem statement above.)
  */ 
-int computeNumberUniquePaths(unsigned int numSteps, std::vector<unsigned int> numStepsAtATime)
+unsigned long long int computeNumberUniquePaths(unsigned int numSteps, std::vector<unsigned int> numStepsAtATime)
 {
-    std::vector<int> arr(numSteps + 1, 0);
+    std::vector<unsigned long long int> arr(numSteps + 1, 0);
     arr[0] = 1;
     if(numStepsAtATime.empty())
     {
@@ -63,6 +63,12 @@ int computeNumberUniquePaths(unsigned int numSteps, std::vector<unsigned int> nu
                 
                 arr[i] += arr[i - numStepsAtATime[j]];
             }
+            
+        }
+        if(i % 2 == 0)
+        {
+        std::cout << "There are " << arr[i - 1] << " ways to go up " << i - 1 << " stairs.\t";
+        std::cout << "There are " << arr[i] << " ways to go up " << i << " stairs.\n";
         }
     }
 
@@ -72,11 +78,9 @@ int computeNumberUniquePaths(unsigned int numSteps, std::vector<unsigned int> nu
 int main()
 {
     std::vector<unsigned int> numSteps;
-    numSteps.push_back(12);
-    numSteps.push_back(3);
     numSteps.push_back(1);
-    numSteps.push_back(9);
+    numSteps.push_back(2);
 
     //Should be 150 ways.
-    std::cout << "There are " << computeNumberUniquePaths(14, numSteps) << " possible ways to go up the stairs.\n";
+    std::cout << "There are " << computeNumberUniquePaths(66, numSteps) << " possible ways to go up the stairs.\n";
 }

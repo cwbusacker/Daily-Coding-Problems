@@ -11,7 +11,6 @@ unsigned int computeShortestPath(vectorBool2D maze, indexPair start, indexPair e
     unsigned int startIndex = start.first * maze[0].size() + start.second;
     unsigned int endIndex = end.first * maze[0].size() + end.second;
     possiblePaths[startIndex] = 0;
-    std::cout << startIndex << std::endl;
     int pause;
     indexPair currentPos;
     unsigned int saveSmallest;
@@ -29,7 +28,7 @@ unsigned int computeShortestPath(vectorBool2D maze, indexPair start, indexPair e
                 currentPosInd = findShort;
             }
         }
-        
+
         shortestPathsFound[currentPosInd] =  saveSmallest;
 
         if(currentPos.first != 0 && maze[currentPos.first - 1][currentPos.second] == false)

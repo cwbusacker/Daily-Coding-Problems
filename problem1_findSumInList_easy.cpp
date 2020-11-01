@@ -52,4 +52,6 @@ int main()
 
 
     cout << "Two numbers that add up to " << sum << (findSum(array, sum, size) ? " was found\n" : " was not found\n");
+
+    delete[] array;
 }

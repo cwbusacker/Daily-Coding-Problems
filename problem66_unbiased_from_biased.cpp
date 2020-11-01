@@ -4,7 +4,7 @@
 
 int biased_coin()
 {
-    const static int biased = rand() % 99 + 1;
+    const static int biased = rand() % 99 + 1; //1 - 99 %
 
     int randomInt = rand() % 100;
     if(randomInt > biased)
@@ -37,6 +37,7 @@ int unbiased_coin()
 int main()
 {
     srand(time(NULL));
+    
     int heads = 0;
     int tails = 0;
     bool isHeads;
